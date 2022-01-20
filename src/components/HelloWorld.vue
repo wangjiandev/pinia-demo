@@ -1,6 +1,7 @@
 <template>
   <p>{{ mainStore.counter }}</p>
   <p>{{ mainStore.foo }}</p>
+  <p>{{ mainStore.arr }}</p>
   <br />
   <p>{{ counter }}</p>
   <p>{{ foo }}</p>
@@ -23,6 +24,24 @@ console.log(mainStore.counter)
 const { counter, foo } = storeToRefs(mainStore)
 
 const handleChangeState = () => {
-  mainStore.counter++
+  // 方式一：数据修改最简单的方式
+  // mainStore.counter++
+  // 方式二：修改多个数据建议使用$patch方法,批量更新，因为这个方法修改多个变量不会多次重新渲染页面
+  // mainStore.$patch({
+  //   counter: mainStore.counter + 1,
+  //   foo: 'bar',
+  //   arr: [...mainStore.arr, 4]
+  // })
+  // 多个值更新推荐使用
+  // 方式三：$patch方法可以传入方法，并携带state参数
+  // mainStore.$patch(state => {
+  //   state.counter++
+  //   state.foo = 'bar'
+  //   state.arr.push(4)
+  // })
+  // 方式四：直接将业务逻辑放在actions方法中,只是对方式三的封装
+  // mainStore.changeState()
+  // actions 传值
+  mainStore.changeState(10)
 }
 </script>

@@ -15,7 +15,14 @@ export const useMainStore = defineStore('main', {
     }
   },
   // 用来封装计算属性，有缓存的功能，类似组件的computed
-  getters: {},
+  getters: {
+    // 如果直接传入state而是用this，则必须手动指定类型，ts无法推导 counterTen():number
+    counterTen: state => {
+      // 已经缓存了，用了三次值调用了一次
+      console.log('counterTen>>>>>>')
+      return state.counter * 10
+    }
+  },
   // 用来封装操作方法，类似组件的methods
   actions: {
     // 不能使用箭头函数定义action，因为箭头函数会把this绑定到定义时所在的作用域，而不是action所在的作用域

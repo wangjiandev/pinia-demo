@@ -2,6 +2,11 @@
   <p>{{ mainStore.counter }}</p>
   <p>{{ mainStore.foo }}</p>
   <p>{{ mainStore.arr }}</p>
+
+  <p>{{ mainStore.counterTen }}</p>
+  <p>{{ mainStore.counterTen }}</p>
+  <p>{{ mainStore.counterTen }}</p>
+
   <br />
   <p>{{ counter }}</p>
   <p>{{ foo }}</p>
